@@ -1,0 +1,12 @@
+manifest_version: 1
+name: guided-goal
+version: 0.1.0
+description: "OMP-style guided interview that activates Hermes native goal mode."
+author: Luka / Hermes
+kind: standalone
+provides_commands:
+  - guided-goal
+provides_tools:
+  - guided_goal_activate
+provides_hooks:
+  - pre_gateway_dispatch
