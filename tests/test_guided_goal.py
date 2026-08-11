@@ -93,6 +93,8 @@ def test_bare_command_injects_interview_without_rough_goal():
     assert len(ctx.injected) == 1
     kickoff = ctx.injected[0][0]
     assert "Ask exactly one short question" in kickoff
+    assert "Portable in-session mode" in kickoff
+    assert "No rough goal was supplied" in kickoff
     assert "<rough-goal>" not in kickoff
 
 

@@ -1,1 +1,2 @@
 pytest==9.1.1
+skills-ref==0.1.1

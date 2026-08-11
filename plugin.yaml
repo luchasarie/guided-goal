@@ -1,7 +1,7 @@
 manifest_version: 1
 name: guided-goal
-version: 0.1.0
-description: "Turn rough intent into a verified contract for Hermes native goal mode."
+version: 0.2.0
+description: "Hermes adapter for the universal Guided Goal completion-contract skill."
 author: LuchasArie
 kind: standalone
 provides_commands:

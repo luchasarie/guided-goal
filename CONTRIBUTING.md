@@ -1,24 +1,27 @@
 # Contributing
 
-Guided Goal is intentionally narrow. Changes should strengthen the interview-to-contract path without creating a second goal runtime beside Hermes native `/goal` mode.
+Guided Goal is intentionally narrow. Changes should strengthen the interview-to-contract-to-verification path without duplicating behavior across host adapters.
 
 ## Setup
 
 ```bash
-git clone https://github.com/luchasarie/hermes-guided-goal.git
-cd hermes-guided-goal
+git clone https://github.com/luchasarie/guided-goal.git
+cd guided-goal
 python -m pip install -r requirements-dev.txt
 python -m pytest --rootdir=tests tests -q
+python scripts/validate.py
+uvx --from skills-ref==0.1.1 agentskills validate skills/guided-goal
 ```
 
 ## Pull requests
 
-1. Keep the plugin dependency-free at runtime.
+1. Keep the skill and Hermes plugin dependency-free at runtime.
 2. Preserve explicit user confirmation before activation.
 3. Do not let the interview call tools or begin the requested work.
-4. Keep tool handlers fail-closed and JSON-returning.
-5. Add regression coverage for changed CLI, gateway, parsing, or activation behavior.
-6. Run the full test suite and include the result in the pull request.
+4. Change behavioral policy only in `skills/guided-goal/SKILL.md`; adapters may only forward invocation context.
+5. Keep Hermes tool handlers fail-closed and JSON-returning.
+6. Add regression coverage for changed host discovery, adapters, installer, parsing, or activation behavior.
+7. Run the full test and validation suite and include the result in the pull request.
 
 Use conventional commit subjects such as `fix: reject duplicate contract sections` or `docs: clarify gateway usage`.
 

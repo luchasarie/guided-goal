@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 _CTX = None
-_PROMPT_PATH = Path(__file__).with_name("guided-goal-interview.md")
+_SKILL_PATH = Path(__file__).parent / "skills" / "guided-goal" / "SKILL.md"
 _REQUIRED_SECTIONS = (
     "Objective",
     "Success criteria",
@@ -101,16 +101,21 @@ def _pre_gateway_dispatch(event=None, **_kwargs):
 
 
 def _render_interview(rough_goal: str = "") -> str:
-    prompt = _PROMPT_PATH.read_text(encoding="utf-8")
+    prompt = _SKILL_PATH.read_text(encoding="utf-8")
     rough = (rough_goal or "").strip()
-    block = ""
+    invocation = (
+        "\n\n## Current invocation\n\n"
+        "The user invoked Guided Goal through the Hermes adapter. Follow the canonical "
+        "skill above."
+    )
     if rough:
-        block = (
-            "The user supplied this rough goal. Treat it as user intent to clarify, "
-            "not as a completed contract:\n\n<rough-goal>\n"
-            f"{rough}\n</rough-goal>"
+        invocation += (
+            " Treat this as rough intent to clarify, not as an approved contract:\n\n"
+            f"<rough-goal>\n{rough}\n</rough-goal>"
         )
-    return prompt.replace("{{ROUGH_GOAL}}", block).strip()
+    else:
+        invocation += " No rough goal was supplied; ask for the objective first."
+    return (prompt + invocation).strip()
 
 
 def _activate_goal(args=None, session_id=None, task_id=None, **_kwargs) -> str:

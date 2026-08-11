@@ -12,4 +12,4 @@ Do not include credentials, private conversation content, or real user goal cont
 
 ## Trust boundary
 
-Hermes plugins execute with the same local trust as Hermes Agent. Guided Goal itself makes no network requests and stores goal state only through Hermes native `GoalManager`, but users should still review source code before enabling any third-party plugin.
+Agent Skills and Hermes plugins execute with the same local trust as their host agent. Guided Goal makes no network requests. Hermes stores goal state through its native `GoalManager`; portable hosts execute only in the current session. The installer changes only documented skill and command locations, refuses conflicts by default, and preserves backups when forced. Users should still review source before installing any third-party package.
