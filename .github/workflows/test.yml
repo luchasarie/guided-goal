@@ -29,3 +29,26 @@ jobs:
         run: python -m compileall -q __init__.py tests
       - name: Run tests
         run: python -m pytest --rootdir=tests tests -q
+
+  hermes-host-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - name: Install test dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Fetch pinned Hermes goal API
+        run: |
+          mkdir -p .ci-hermes/hermes_cli
+          touch .ci-hermes/hermes_cli/__init__.py
+          curl --fail --silent --show-error --location \
+            https://raw.githubusercontent.com/NousResearch/hermes-agent/37e46c774cad6e000407dbf0b79cf8826eac895a/hermes_cli/goals.py \
+            --output .ci-hermes/hermes_cli/goals.py
+      - name: Run tests against Hermes host API
+        env:
+          PYTHONPATH: ${{ github.workspace }}/.ci-hermes
+        run: python -m pytest --rootdir=tests tests -q
