@@ -115,9 +115,9 @@ def test_command_blocks_active_or_paused_goal():
 
 def test_gateway_hook_rewrites_command_to_interview():
     event = SimpleNamespace(text="/guided-goal ship it", get_text=lambda: event.text)
-    plugin._pre_gateway_dispatch(event=event)
-    assert not event.text.startswith("/")
-    assert "<rough-goal>\nship it\n</rough-goal>" in event.text
+    result = plugin._pre_gateway_dispatch(event=event)
+    assert result["action"] == "rewrite"
+    assert "<rough-goal>\nship it\n</rough-goal>" in result["text"]
 
 
 def test_gateway_hook_ignores_normal_messages():
@@ -153,6 +153,22 @@ def test_activation_rejects_missing_section_or_attempt_cap():
     result = json.loads(plugin._activate_goal({"objective": no_cap}))
     assert result["ok"] is False
     assert "numeric attempt/turn cap" in result["error"]
+
+
+def test_activation_returns_json_when_host_goal_api_is_unavailable(monkeypatch):
+    import builtins
+
+    real_import = builtins.__import__
+
+    def fail_goal_import(name, *args, **kwargs):
+        if name == "hermes_cli.goals":
+            raise ModuleNotFoundError("simulated missing host API")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", fail_goal_import)
+    result = json.loads(plugin._activate_goal({"objective": CONTRACT}))
+    assert result["ok"] is False
+    assert "Goal activation failed" in result["error"]
 
 
 def test_activation_refuses_to_replace_active_goal():

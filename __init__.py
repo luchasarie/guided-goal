@@ -1,4 +1,4 @@
-"""OMP-style guided goal interview for Hermes native goal mode."""
+"""Guided interview and contract activation for Hermes native goal mode."""
 
 from __future__ import annotations
 
@@ -97,8 +97,7 @@ def _pre_gateway_dispatch(event=None, **_kwargs):
     match = re.match(r"^/guided-goal(?:\s+(.*))?$", text, re.IGNORECASE | re.DOTALL)
     if not match:
         return None
-    event.text = _render_interview(match.group(1) or "")
-    return None
+    return {"action": "rewrite", "text": _render_interview(match.group(1) or "")}
 
 
 def _render_interview(rough_goal: str = "") -> str:
@@ -159,6 +158,10 @@ def _activate_goal(args=None, session_id=None, task_id=None, **_kwargs) -> str:
         )
     except (ValueError, RuntimeError) as exc:
         return _result(False, error=str(exc))
+    except Exception as exc:
+        # Plugin tool handlers must fail closed as JSON, never crash the
+        # parent Hermes turn when the host API is unavailable or changes.
+        return _result(False, error=f"Goal activation failed: {exc}")
 
 
 def _parse_sections(text: str) -> dict[str, str]:

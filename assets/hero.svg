@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Guided Goal for Hermes Agent</title>
+  <desc id="desc">A rough spark becomes a five-part verified goal contract and a focused target.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="0.5" stop-color="#15113a"/>
+      <stop offset="1" stop-color="#071b2d"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="target" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c4b5fd"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#c4b5fd" stroke-opacity="0.055"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="520" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="520" rx="28" fill="url(#grid)"/>
+  <circle cx="122" cy="96" r="130" fill="#7c3aed" opacity="0.08"/>
+  <circle cx="1080" cy="430" r="180" fill="#0891b2" opacity="0.07"/>
+
+  <g transform="translate(92 124)">
+    <path d="M28 90c28-34 58 28 86-5s57 18 88-19" fill="none" stroke="#a78bfa" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+    <circle cx="28" cy="90" r="9" fill="#f472b6" filter="url(#glow)"/>
+    <circle cx="114" cy="85" r="8" fill="#a78bfa"/>
+    <circle cx="202" cy="66" r="8" fill="#22d3ee"/>
+    <text x="0" y="135" fill="#a7a8c0" font-family="Inter,ui-sans-serif,system-ui" font-size="17" font-weight="650" letter-spacing="1.2">ROUGH INTENT</text>
+    <text x="0" y="169" fill="#f4f2ff" font-family="Inter,ui-sans-serif,system-ui" font-size="24" font-weight="700">“make it better”</text>
+  </g>
+
+  <rect x="320" y="214" width="91" height="4" rx="2" fill="#8b5cf6" opacity="0.82"/>
+  <polygon points="407,203 424,216 407,229" fill="#a78bfa"/>
+
+  <g transform="translate(424 78)">
+    <rect width="350" height="314" rx="22" fill="#15182f" stroke="#8b5cf6" stroke-opacity="0.58"/>
+    <rect x="1" y="1" width="348" height="54" rx="21" fill="#7c3aed" opacity="0.18"/>
+    <circle cx="28" cy="28" r="7" fill="#f472b6"/>
+    <circle cx="50" cy="28" r="7" fill="#fbbf24"/>
+    <circle cx="72" cy="28" r="7" fill="#34d399"/>
+    <text x="102" y="35" fill="#ddd6fe" font-family="Inter,ui-sans-serif,system-ui" font-size="15" font-weight="700">COMPLETION CONTRACT</text>
+
+    <g font-family="Inter,ui-sans-serif,system-ui" font-size="17" font-weight="650">
+      <circle cx="37" cy="91" r="13" fill="#7c3aed"/><text x="33" y="97" fill="white">1</text><text x="64" y="97" fill="#f4f2ff">Objective</text>
+      <circle cx="37" cy="136" r="13" fill="#7c3aed"/><text x="32" y="142" fill="white">2</text><text x="64" y="142" fill="#f4f2ff">Success criteria</text>
+      <circle cx="37" cy="181" r="13" fill="#7c3aed"/><text x="32" y="187" fill="white">3</text><text x="64" y="187" fill="#f4f2ff">Verification</text>
+      <circle cx="37" cy="226" r="13" fill="#7c3aed"/><text x="32" y="232" fill="white">4</text><text x="64" y="232" fill="#f4f2ff">Boundaries</text>
+      <circle cx="37" cy="271" r="13" fill="#7c3aed"/><text x="32" y="277" fill="white">5</text><text x="64" y="277" fill="#f4f2ff">Stop conditions</text>
+    </g>
+    <g fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M296 85l7 7 13-16"/><path d="M296 130l7 7 13-16"/><path d="M296 175l7 7 13-16"/><path d="M296 220l7 7 13-16"/><path d="M296 265l7 7 13-16"/>
+    </g>
+  </g>
+
+  <rect x="785" y="214" width="82" height="4" rx="2" fill="#22d3ee" opacity="0.82"/>
+  <polygon points="863,203 880,216 863,229" fill="#22d3ee"/>
+
+  <g transform="translate(910 116)" filter="url(#glow)">
+    <circle cx="98" cy="104" r="92" fill="none" stroke="url(#target)" stroke-width="6"/>
+    <circle cx="98" cy="104" r="61" fill="none" stroke="#a78bfa" stroke-width="5" opacity="0.82"/>
+    <circle cx="98" cy="104" r="30" fill="#10172d" stroke="#22d3ee" stroke-width="5"/>
+    <circle cx="98" cy="104" r="9" fill="#f8fafc"/>
+  </g>
+
+  <text x="592" y="445" text-anchor="end" fill="#c4b5fd" font-family="Inter,ui-sans-serif,system-ui" font-size="36" font-weight="800">GUIDED</text>
+  <text x="608" y="445" text-anchor="start" fill="#67e8f9" font-family="Inter,ui-sans-serif,system-ui" font-size="36" font-weight="800">GOAL</text>
+  <text x="600" y="479" text-anchor="middle" fill="#a7a8c0" font-family="Inter,ui-sans-serif,system-ui" font-size="18" font-weight="550" letter-spacing="0.8">CLARIFY · CONTRACT · VERIFY · FINISH</text>
+</svg>

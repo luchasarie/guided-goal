@@ -1,8 +1,8 @@
 manifest_version: 1
 name: guided-goal
 version: 0.1.0
-description: "OMP-style guided interview that activates Hermes native goal mode."
-author: Luka / Hermes
+description: "Turn rough intent into a verified contract for Hermes native goal mode."
+author: LuchasArie
 kind: standalone
 provides_commands:
   - guided-goal
