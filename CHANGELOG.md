@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented here.
 
+## [0.2.1] - 2026-08-11
+
+### Fixed
+
+- Fail installer preflight when any packaged source is missing instead of creating a broken symlink or partially replacing earlier destinations.
+- Cover missing-source rollback safety in both symlink and copy modes.
+
 ## [0.2.0] - 2026-08-11
 
 ### Added

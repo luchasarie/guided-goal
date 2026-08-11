@@ -107,6 +107,13 @@ def remove_path(path: Path) -> None:
 
 
 def install(targets: list[Target], *, mode: str, force: bool, dry_run: bool) -> list[Path]:
+    missing_sources = [target for target in targets if not target.source.exists()]
+    if missing_sources:
+        details = ", ".join(
+            f"{target.label}: {target.source}" for target in missing_sources
+        )
+        raise RuntimeError(f"Installation source does not exist: {details}")
+
     pending: list[Target] = []
     for target in targets:
         if same_content(target.source, target.destination):

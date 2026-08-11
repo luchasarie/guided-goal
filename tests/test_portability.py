@@ -94,6 +94,27 @@ def test_broken_symlink_is_treated_as_a_conflict(tmp_path: Path):
         installer.install(targets, mode="symlink", force=False, dry_run=False)
 
 
+@pytest.mark.parametrize("mode", ["symlink", "copy"])
+def test_missing_source_fails_preflight_without_mutating_destinations(tmp_path: Path, mode: str):
+    source_a = tmp_path / "source-a.txt"
+    source_a.write_text("new-a", encoding="utf-8")
+    missing_source = tmp_path / "missing.txt"
+    destination_a = tmp_path / "dest-a.txt"
+    destination_a.write_text("old-a", encoding="utf-8")
+    destination_b = tmp_path / "dest-b.txt"
+    targets = [
+        installer.Target(source_a, destination_a, "A"),
+        installer.Target(missing_source, destination_b, "missing"),
+    ]
+
+    with pytest.raises(RuntimeError, match="Installation source does not exist"):
+        installer.install(targets, mode=mode, force=True, dry_run=False)
+
+    assert destination_a.read_text(encoding="utf-8") == "old-a"
+    assert not installer.lexical_exists(destination_b)
+    assert list(tmp_path.glob("*.backup-*")) == []
+
+
 def test_multi_target_failure_rolls_back_prior_replacement(tmp_path: Path, monkeypatch):
     source_a = tmp_path / "source-a.txt"
     source_b = tmp_path / "source-b.txt"

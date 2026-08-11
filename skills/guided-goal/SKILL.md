@@ -5,7 +5,7 @@ license: MIT
 compatibility: Works in Agent Skills clients; Hermes adds native persisted goal activation.
 metadata:
   author: LuchasArie
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # Guided Goal

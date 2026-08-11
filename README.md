@@ -202,7 +202,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution workflow and [the ho
 
 ## Project status
 
-`v0.2.0` is the universal release: one completion-contract skill, five host integrations, and no duplicated behavioral prompts.
+`v0.2.1` is the universal release: one completion-contract skill, five host integrations, no duplicated behavioral prompts, and fail-closed installer source preflight.
 
 ## License
 
