@@ -31,6 +31,12 @@ You: Yes.
 Agent: Goal activated. Work begins immediately.
 ```
 
+## See it in 30 seconds
+
+https://github.com/user-attachments/assets/2d00f46a-8172-4d50-b7a6-f9886b1dff75
+
+Can't see the video? [Watch the 30-second demo](https://github.com/user-attachments/assets/2d00f46a-8172-4d50-b7a6-f9886b1dff75).
+
 ## What it fixes
 
 Without a contract, an agent can polish forever, stop after a plausible-looking change, or quietly broaden scope. Guided Goal makes five things explicit before work begins:
